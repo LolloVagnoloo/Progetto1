@@ -9,9 +9,15 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::middleware('guest')->group(function () {
+    // Route::post('/form', function(Request $request){
+    //     dd($request);
+    // })->name('form');
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 

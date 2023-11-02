@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,13 +27,16 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = User::find(auth()->id());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+        $user->username = $request->input('username');
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->birthdate = $request->input('birthdate');
+        $user->residence = $request->input('residence');
+        $user->job = $request->input('job');
 
-        $request->user()->save();
+        $user->update();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -42,14 +46,10 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current-password'],
-        ]);
 
-        $user = $request->user();
+        $user = User::find(auth()->id());
 
         Auth::logout();
-
         $user->delete();
 
         $request->session()->invalidate();
