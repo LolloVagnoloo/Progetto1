@@ -1,9 +1,9 @@
 let photoArray = [
-    'http://127.0.0.1:8000/build/assets/fano.jpg',
-    'http://127.0.0.1:8000/build/assets/fano1.jpg',
-    'http://127.0.0.1:8000/build/assets/fano2.jpeg',
-    'http://127.0.0.1:8000/build/assets/fano3.jpeg',
-    'http://127.0.0.1:8000/build/assets/fano4.jpeg'
+    'https://tweban.dii.univpm.it/~grp_53/laraProject/public/build/assets/fano.jpg',
+    'https://tweban.dii.univpm.it/~grp_53/laraProject/public/build/assets/fano1.jpg',
+    'https://tweban.dii.univpm.it/~grp_53/laraProject/public/build/assets/fano2.jpg',
+    'https://tweban.dii.univpm.it/~grp_53/laraProject/public/build/assets/fano3.jpg',
+    'https://tweban.dii.univpm.it/~grp_53/laraProject/public/build/assets/fano4.jpg'
     ]
 
 let banner = document.querySelector('#banner')

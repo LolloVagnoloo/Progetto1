@@ -12,7 +12,7 @@
             $car = App\Models\Car::find($carId);
         @endphp
 
-        <img class="car img" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">
+        <img class="car-prenota" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">
         <p>Marca: {{ $car->brand }}</p>
         <p>Modello: {{ $car->model }}</p>
         <p>Posti: {{ $car->seats }}</p>

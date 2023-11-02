@@ -18,8 +18,8 @@ use App\Http\Controllers\FaqController;
 Route::get('/register', function() {
     return view('auth.register');
 })->name ('registrazione');
-Route::get('/chi-siamo', [ChiSiamoController::class, 'index']);
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/chi-siamo', [ChiSiamoController::class, 'index'])->name('chi-siamo');
+Route::get('/~grp_53/laraProject/public/', [HomeController::class, 'home'])->name('home');
 Route::get('/catalogo', [CatalogoController::class, 'catalogo'])->name('catalogo');
 Route::post('/catalogo', [CatalogoController::class, 'filtro'])->name('filtro');
 

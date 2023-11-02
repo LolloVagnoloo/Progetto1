@@ -13,13 +13,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-ul">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
+              <a class="nav-link" aria-current="page" href='{{ route('home') }}'>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/catalogo">Catalogo Auto</a>
+              <a class="nav-link" href='{{ route('catalogo') }}'>Catalogo Auto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/chi-siamo">Chi Siamo</a>
+              <a class="nav-link" href='{{ route('chi-siamo') }}'>Chi Siamo</a>
             </li>
           </ul>
 
@@ -39,7 +39,12 @@
                         @csrf
                         <button type="submit" class="btn btn-logout">Logout</button>
                     </form> --}}
-                    <button id="logout-button" class="btn btn-logout">Logout</button>
+
+                        <form method="POST" action='{{ route('logout') }}'>
+                            @csrf
+                            <button id="logout-button" class="btn btn-logout" type="submit">Logout</button>
+                        </form>
+
                 @else
 
                 <button onclick="window.location.href='{{ url('/register') }}'" class="btn btn-primary">Registrati</button>
@@ -50,5 +55,5 @@
 
         </div>
       </div>
-      <script src="{{ asset('js/logout-jquery.js')}}"></script>
+      {{-- <script src="{{ asset('js/logout-jquery.js')}}"></script> --}}
 </nav>
