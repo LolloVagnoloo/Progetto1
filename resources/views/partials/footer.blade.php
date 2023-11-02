@@ -18,6 +18,8 @@
             <p>Telefono: 123-456-789</p>
             <p>Email: info@vagnoli.com</p>
             <p>Indirizzo: Via Autostrada, 123, 61032 Fano PU, Italia</p>
+
+            <p><a href="public/pdf/Documentazione.pdf" target="_blank">Documentazione</a></p>
         </div>
         </div>
 

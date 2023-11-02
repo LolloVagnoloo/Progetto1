@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -30,7 +31,7 @@ class UserController extends Controller
         $user->residence = $request->input('luogo_residenza');
         $user->job = $request->input('occupazione');
         $user->username = $request->input('username');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
 
         $user->save();
 
