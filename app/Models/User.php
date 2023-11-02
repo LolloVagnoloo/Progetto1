@@ -7,23 +7,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Car;
+
+
+
+
 
 class User extends Authenticatable
 {
+    protected $table='users';
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
-        'name',
-        'email',
+        'username',
         'password',
+        'role',
+        'firstname',
+        'lastname',
+        'residence',
+        'birthdate',
+        'job'
     ];
 
-    /**
+
+
+   /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -40,5 +50,15 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'string',
     ];
+
+
+    public function cars()
+    {
+            return $this -> belongsToMany(Car::class);
+    }
+
 }
+
+
