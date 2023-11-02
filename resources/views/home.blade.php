@@ -87,9 +87,9 @@
         let photoArray = [
     'http://127.0.0.1:8000/build/assets/fano.jpg',
     'http://127.0.0.1:8000/build/assets/fano1.jpg',
-    'http://127.0.0.1:8000/build/assets/fano2.jpeg',
-    'http://127.0.0.1:8000/build/assets/fano3.jpeg',
-    'http://127.0.0.1:8000/build/assets/fano4.jpeg'
+    'http://127.0.0.1:8000/build/assets/fano2.jpg',
+    'http://127.0.0.1:8000/build/assets/fano3.jpg',
+    'http://127.0.0.1:8000/build/assets/fano4.jpg'
     ]
 
 let banner = document.querySelector('#banner')
