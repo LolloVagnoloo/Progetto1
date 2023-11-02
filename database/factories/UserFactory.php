@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\Car;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -15,26 +17,31 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'username' => $this->faker->username,
+            'password' =>$this->faker->password,
             'remember_token' => Str::random(10),
+            'firstname'=> $this->faker->firstName,
+            'lastname'=> $this->faker->lastName,
+            'residence'=> $this->faker->city,
+            'birthdate'=> $this->faker->dateTimeBetween('-70 years','-18 years'),
+            'job' => $this->faker->randomElement(['Studente','Cassiere','Infermiere','Muratore','Insegnante','Cuoco','Camionista','Segretario','Addetto HR','Elettricista','Commesso','Disoccupato','Altro'])
+
+
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
+    public function configure()
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
+
+        return $this->afterCreating(function (User $user){
+
+            $cars = Car::inRandomOrder()->take(rand(1,5))->get();
+            $user->cars()->attach($cars);
+        });
+
     }
+
 }
