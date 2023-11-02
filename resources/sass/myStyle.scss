@@ -1,0 +1,394 @@
+.social > a{
+    margin-right:1rem;
+    }
+
+#banner{
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 90%;
+            margin: 20px auto;
+    }
+
+.grid{
+     margin:1rem;
+}
+
+#footer-div{
+    background-image: url("public\build\assets\fano.png");  /* mettere url corretto */
+    background-size: cover;
+    background-position: top;
+}
+
+body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding-inline: 80px;
+        background-color: #f4f4f4;
+}
+
+    .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            // css per la griglia delle auto nel catalogo
+
+    .car-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            // css per la casella singola di un'auto nel catalogo
+    .car {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            }
+            // css per l'immagine dell'auto nel catalogo
+
+    .car img {
+            width: 300px; /* Larghezza desiderata */
+            height: 200px; /* Altezza desiderata */
+            }
+
+    .icone-social {
+        font-size: 5em;
+    }
+
+    .maps-image {
+        display: block;
+        margin: 0 auto; /* Centro l'immagine orizzontalmente */
+        max-width: 100%;
+        height: 500px;
+    }
+
+    .home-image {
+        display: block;
+        margin: 0 auto; /* Centro l'immagine orizzontalmente */
+        max-width: 50%;  /* Larghezza massima del 50% della pagina */
+        height: 500px;
+        animation: 4100ms infinite photochange;
+        opacity: 0;
+    }
+
+    @keyframes photochange {
+        0%{opacity: 0;}
+        25%{opacity: 1;}
+        50%{opacity: 1;}
+        75%{opacity: 0;}
+        100%{opacity: 0;}
+    }
+
+
+    .filter-menu {
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-menu h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .filter-menu label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .filter-menu select,
+    .filter-menu input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .filter-menu button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .filter-menu button:hover {
+        background-color: #0056b3;
+    }
+.btn-logout {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.btn-logout:hover {
+    background-color: darkred;
+}
+
+.btn-primary {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: darkblue;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Stili per l'intestazione della tabella */
+thead {
+    background-color: #f2f2f2;
+}
+
+/* Stili per le righe alternate */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Stili per l'hover */
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Stili per le etichette */
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Stili per i select e il button */
+select, button {
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+/* Stili per il submit button */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.btn_rental{
+    background-color: green; /* Colore di sfondo verde */
+    color: white; /* Testo bianco */
+    padding: 10px 20px; /* Spaziatura interna */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Bordi arrotondati */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    display: block; /* Imposta il bottone come blocco per centrarlo */
+    margin: 0 auto; /* Centra il bottone orizzontalmente */
+}
+
+.contact-box {
+    font-size: 20px; /* Imposta la dimensione del font a 20px */
+  }
+
+  .contact-box h2 {
+    font-size: 24px; /* Imposta la dimensione del font per l'elemento h2 */
+  }
+
+  .contact-box p {
+    font-size: 18px; /* Imposta la dimensione del font per i paragrafi */
+    margin: 10px 0; /* Aggiunge un margine sopra e sotto ciascun paragrafo per migliorare la leggibilità */
+  }
+
+// 3 elementi navbar home/catalogo/chisiamo
+.nav-link {
+    display: inline-block;
+    margin-right: 10px; /* Aggiungi margine a destra tra gli elementi */
+    padding: 10px 20px; /* Imposta il padding come preferisci */
+    border-radius: 20px; /* Bordo smussato */
+    background-color: #007bff; /* Colore di sfondo blu */
+    color: #fff; /* Colore del testo bianco */
+    text-decoration: none; /* Rimuove la sottolineatura dei link */
+    transition: background-color 0.2s ease; /* Transizione di colore al passaggio del mouse */
+}
+
+.nav-link:hover {
+    background-color: darkblue; /* Cambia il colore al passaggio del mouse */
+}
+
+//Titolo su navbar
+.navbar-brand{
+    font-size: 24px; /* Imposta la dimensione del carattere */
+    font-weight: bold; /* Imposta lo spessore del carattere a grassetto */
+}
+
+
+// Nome utente loggato navbar
+.logged-user-label{
+    padding-right: 10px; /* Distanziamento a destra */
+    font-size: 16px; /* Dimensione del carattere */
+    color: #333; /* Colore del testo */
+}
+
+//Pagina login
+
+form.login-form {
+    max-width: 400px; /* Larghezza massima del form */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #000;
+  }
+
+  /* Altri stili specifici, se necessario */
+  form.login-form input[type="text"],
+  form.login-form input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+
+  form.login-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  form.login-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+//pagina di registrazione
+form.register-form {
+    max-width: 400px; /* Larghezza massima del form */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #000;
+  }
+  form.register-form input[type="text"],
+  form.register-form input[type="password"],
+  form.register-form input[type="date"],
+  form.register-form select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+  form.register-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  form.register-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+
+.home-title {
+    font-size: 24px; /* Imposta la dimensione del carattere */
+    font-weight: bold; /* Imposta lo spessore del carattere a grassetto */
+}
+
+.custom-select {
+    width: 15px;
+}
+// nome dei filtri
+.filter-label {
+    font-size: 24px; /* Regola la dimensione del testo a tuo piacimento */
+    text-align: center; /* Centra il testo orizzontalmente */
+    display: block; /* Per far sì che il label occupi l'intera larghezza del suo contenitore */
+    margin: 0 auto; /* Centra il label orizzontalmente rispetto al suo contenitore */
+  }
+// larghezza tendina filtri del catalogo
+.fixed-width-select {
+    width: 150px; /* Imposta la larghezza desiderata */
+}
+// bottone filtra
+.filter-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 50%; /* Imposta la larghezza al 50% */
+    display: block; /* Per far sì che il bottone occupi l'intera larghezza del suo contenitore */
+    margin: 0 auto; /* Centra il bottone orizzontalmente */
+}
+// titolo chi siamo
+.welcome-header {
+    font-size: 36px; /* Regola la dimensione del testo a tuo piacimento */
+    color: red; /* Imposta il colore del testo a rosso */
+    text-align: center; /* Centra il testo orizzontalmente */
+}
+//titolo filtri
+.filter-title {
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+//filtri allineati
+.input-container {
+    text-align: center; /* Centra gli elementi all'interno del container orizzontalmente */
+}
+//info della home
+.home-info {
+    font-weight: bold; /* Testo in grassetto */
+    font-size: 1.2em; /* Dimensione del carattere leggermente più grande (puoi regolare il valore a tuo piacimento) */
+}
+
+body.register-full {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Imposta l'altezza minima a 100vh */
+    margin: 0;
+    overflow-y: auto; /* Abilita la barra di scorrimento verticale solo se necessario */
+}
+
+  body.login-full {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centro orizzontalmente */
+    align-items: center; /* Centro verticalmente */
+    height: 100vh; /* Assicura che il body occupi l'intera altezza della viewport */
+    margin: 0; /* Rimuovi i margini predefiniti del body */
+  }
+.login-title{
+    color: red;
+    font-size: 2rem; /* Equivalente a text-2xl */
+    font-weight: bold; /* Equivalente a font-bold */
+    text-align: center; /* Equivalente a text-center */
+    margin-bottom: 1rem; /* Equivalente a mb-4 */
+}
+
+
+
+
+
+
+
+
