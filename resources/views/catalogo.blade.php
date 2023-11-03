@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
+<link rel="stylesheet" type="text/css" href="sass\myStyle.scss">
     <body>
         <div class="filter-menu">
             <label class="filter-title">Filtri</label>

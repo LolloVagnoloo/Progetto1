@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
+<link rel="stylesheet" type="text/css" href="sass\myStyle.scss">
 <body>
     <div id="home">
         <div class="d-flex justify-content-center mt-4">

@@ -1,5 +1,5 @@
 <footer>
-    <link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
+    <link rel="stylesheet" type="text/css" href="sass\myStyle.scss">
       <div id="footer-div">
         <div class="d-flex justify-content-around mt-4 py-4">
           <div class="social-box">
