@@ -2,7 +2,7 @@
 @section('content')
 <body>
     <div id="chiSiamo">
-        <h1 class="welcome-header">Benvenuti al Noleggio Auto Vagnoli</h1>
+        <h1 style="font-size: 36px; color: red; text-align: center;">Benvenuti al Noleggio Auto Vagnoli</h1>
 
             <h3><strong>Chi siamo</strong></h3>
             <p>Noleggio Auto Vagnoli è un'azienda rinomata nel settore dei noleggi auto, con una solida reputazione costruita su decenni di esperienza e dedizione. La nostra storia è caratterizzata da un impegno costante nell'offrire ai nostri clienti un servizio di noleggio auto di prim'ordine. Ci distinguiamo per la nostra vasta gamma di veicoli, che spazia dai veicoli economici agli eleganti SUV e alle auto di lusso. La nostra flotta è costantemente aggiornata per garantire prestazioni e sicurezza ottimali.</p>

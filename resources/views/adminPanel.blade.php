@@ -23,111 +23,107 @@
 <form method="POST" action="{{ route('car.store') }}" enctype="multipart/form-data">
     @csrf
 
-<table>
-    <thead>
-        <tr>
-            <th>Marca</th>
-            <th>Modello</th>
-            <th>Targa</th>
-            <th>Cilindrata</th>
-            <th>Numero Posti</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>File Immagine</th>
-            <th>Azione</th>
-        </tr>
-    </thead>
-    <tbody>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Marca</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Modello</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Targa</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cilindrata</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Numero Posti</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Descrizione</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Prezzo</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">File Immagine</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Azione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #f2f2f2;">
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="brand" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="model" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="plate" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="number" name="displacement" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="number" name="seats" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <textarea name="description" rows="4" required></textarea>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="number" name="daily_price" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit">Salva Nuova Auto</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <br>
-        <br>
-
-    <tr>
-        <td>
-            <input type="text" name="brand" required><br><br>
-        </td>
-        <td>
-            <input type="text" name="model" required><br><br>
-        </td>
-        <td>
-            <input type="text" name="plate" required><br><br>
-        </td>
-        <td>
-            <input type="number" name="displacement" required><br><br>
-        </td>
-        <td>
-
-            <input type="number" name="seats" required><br><br>
-        </td>
-        <td>
-            <textarea name="description" rows="4" required></textarea><br><br>
-        </td>
-        <td>
-            <input type="number" name="daily_price" required><br><br>
-        </td>
-        <td>
-            <!-- Campo di input per l'immagine -->
-            <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required><br><br>
-        </td>
-        <td>
-            <button type="submit">Salva Nuova Auto</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
 </form>
 
 <br>
 
 <h1 style="margin-bottom: 20px;">Tabella Macchine</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Marca</th>
-                <th>Modello</th>
-                <th>Targa</th>
-                <th>Cilindrata</th>
-                <th>Numero Posti</th>
-                <th>Descrizione</th>
-                <th>Prezzo</th>
-                <th>File Immagine</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php
-                $cars = DB::table('cars')->get();
-            @endphp
-            @foreach($cars as $car)
-            <tr>
-                <form method="POST" action="{{ route('update_or_delete') }}" enctype="multipart/form-data">
-                    @csrf
-                    <td><input type="text" name="brand" value="{{ $car->brand }}"></td>
-                    <td><input type="text" name="model" value="{{ $car->model }}"></td>
-                    <td><input type="text" name="plate" value="{{ $car->plate }}"></td>
-                    <td><input type="text" name="displacement" value="{{ $car->displacement }}"></td>
-                    <td><input type="text" name="seats" value="{{ $car->seats }}"></td>
-                    <td><input type="text" name="description" value="{{ $car->description }}"></td>
-                    <td><input type="text" name="price" placeholder="{{ $car->price }}" value="{{ $car->price }}"></td>
-                    <td>
-                        @if ($car->image)
-                            <input type="text" name="image" value="{{ $car->image }}" placeholder="Nome del file" readonly>
-                            <input type="file" name="new_image" accept=".jpg, .jpeg, .png, .gif">
-                        @else
-                            <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required>
-                        @endif
-                    </td>
-                    <input type="hidden" name="car_id" value="{{ $car->id }}">
-                    <td>
-                        <button type="submit" name="car_button" value="update_car">Modifica</button>
-                        <button type="submit" name="car_button" value="delete_car">Cancella</button>
-                    </td>
-                </form>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<table style="border-collapse: collapse; width: 100%; text-align: left;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Marca</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Modello</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Targa</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cilindrata</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Numero Posti</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Descrizione</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Prezzo</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">File Immagine</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @php
+            $cars = DB::table('cars')->get();
+        @endphp
+        @foreach($cars as $car)
+        <tr style="background-color: #f2f2f2;">
+            <form method="POST" action="{{ route('update_or_delete') }}" enctype="multipart/form-data">
+                @csrf
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="brand" value="{{ $car->brand }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="model" value="{{ $car->model }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="plate" value="{{ $car->plate }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="displacement" value="{{ $car->displacement }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="seats" value="{{ $car->seats }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="description" value="{{ $car->description }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="price" placeholder="{{ $car->price }}" value="{{ $car->price }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    @if ($car->image)
+                        <input type="text" name="image" value="{{ $car->image }}" placeholder="Nome del file" readonly>
+                        <input type="file" name="new_image" accept=".jpg, .jpeg, .png, .gif">
+                    @else
+                        <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required>
+                    @endif
+                </td>
+                <input type="hidden" name="car_id" value="{{ $car->id }}">
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="car_button" value="update_car">Modifica</button>
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="car_button" value="delete_car">Cancella</button>
+                </td>
+            </form>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 
     <br>
 
@@ -136,8 +132,8 @@
     <form action="{{ route('rental_month')}}" method="POST">
         @csrf
 
-        <label for="month">Mese:</label>
-        <select name="month" id="month">
+        <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="month">Mese:</label>
+        <select style="padding: 8px; margin-bottom: 12px;" name="month" id="month">
             <option value="">Inserire Mese</option>
             <option value="1">Gennaio</option>
             <option value="2">Febbraio</option>
@@ -153,41 +149,42 @@
             <option value="12">Dicembre</option>
         </select>
 
-        <button type="submit">Cerca</button>
+        <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit">Cerca</button>
     </form>
 
     <br>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Targa</th>
-                    <th>Marca</th>
-                    <th>Modello</th>
-                    <th>Nome Utente</th>
-                    <th>Cognome Utente</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if(isset($carRentals) && count($carRentals) > 0)
-                @foreach ($carRentals as $carRental)
+    <table class="table" style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Targa</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Marca</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Modello</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Nome Utente</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cognome Utente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(isset($carRentals) && count($carRentals) > 0)
+            @foreach ($carRentals as $carRental)
 
-                <tr>
-                    <td>{{ $carRental->plate }}</td>
-                    <td>{{ $carRental->brand }}</td>
-                    <td>{{ $carRental->model }}</td>
-                    <td>{{ $carRental->firstname }}</td>
-                    <td>{{ $carRental->lastname }}</td>
-                </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $carRental->plate }}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $carRental->brand }}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $carRental->model }}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $carRental->firstname }}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $carRental->lastname }}</td>
+            </tr>
 
-                @endforeach
-                @else
-                <tr>
-                    <td colspan="5">Nessun noleggio disponibile per il mese selezionato.</td>
-                </tr>
-            @endif
-            </tbody>
-        </table>
+            @endforeach
+            @else
+            <tr>
+                <td colspan="5" style="padding: 8px; border-bottom: 1px solid #ddd;">Nessun noleggio disponibile per il mese selezionato.</td>
+            </tr>
+        @endif
+        </tbody>
+    </table>
+
 
 
 @endcan
@@ -203,108 +200,105 @@
 <form method="POST" action="{{ route('staff.store') }}">
     @csrf
 
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Username</th>
-            <th>Password</th>
-        </tr>
-    </thead>
-    <tbody>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Nome</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cognome</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Username</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #f2f2f2;">
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="firstname" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="lastname" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="text" name="username" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <input type="password" name="password" required>
+                </td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit">Salva Nuovo Staffer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <br>
-        <br>
-
-    <tr>
-        <td>
-            <input type="text" name="firstname" required><br><br>
-        </td>
-        <td>
-            <input type="text" name="lastname" required><br><br>
-        </td>
-        <td>
-            <input type="text" name="username" required><br><br>
-        </td>
-        <td>
-            <input type="password" name="password" required><br><br>
-        </td>
-        <td>
-            <button type="submit">Salva Nuovo Staffer</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
 </form>
 
 <br>
 
 <h1 style="margin-bottom: 20px;">Tabella Staffer</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Username</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php
-                $users = DB::table('users')
+<table style="border-collapse: collapse; width: 100%; text-align: left;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Nome</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cognome</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Username</th>
+            <th style="padding: 8px; border-bottom: 1px solid #ddd;">Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @php
+            $users = DB::table('users')
                 ->where('role', 'staff')
                 ->get();
-            @endphp
-            @foreach($users as $user)
-            <tr>
-                <form method="POST" action="{{ route('update_or_delete_staffer') }}">
-                    @csrf
-                    <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
-                    <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
-                    <td><input type="text" name="username" value="{{ $user->username }}"></td>
-                    <td><input type="password" name="password" value="{{ $user->firstname }}"></td>
-                    <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    <td>
-                        <button type="submit" name="user_button" value="update_staff">Modifica</button>
-                        <button type="submit" name="user_button" value="delete_staff">Cancella</button>
-                    </td>
-                </form>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        @endphp
+        @foreach($users as $user)
+        <tr style="background-color: #f2f2f2;">
+            <form method="POST" action="{{ route('update_or_delete_staffer') }}">
+                @csrf
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="username" value="{{ $user->username }}"></td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="password" name="password" value="{{ $user->firstname }}"></td>
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="user_button" value="update_staff">Modifica</button>
+                    <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="user_button" value="delete_staff">Cancella</button>
+                </td>
+            </form>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
     <br>
 
     <h1 style="margin-bottom: 20px;">Tabella Cancellazione Clienti</h1>
 
-    <table>
-        <thead>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
             <tr>
-                <th>Username</th>
-                <th>Nome</th>
-                <th>Cognome</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Username</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Nome</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Cognome</th>
             </tr>
         </thead>
         <tbody>
             @php
                 $users = DB::table('users')
-                ->where('role', 'client')
-                ->get();
+                    ->where('role', 'client')
+                    ->get();
             @endphp
             @foreach($users as $user)
-            <tr>
+            <tr style="background-color: #f2f2f2;">
                 <form method="POST" action="{{ route('user.destroy') }}">
                     @csrf
                     @method('delete')
-                    <td><input type="text" name="username" value="{{ $user->username }}"></td>
-                    <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
-                    <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="username" value="{{ $user->username }}"></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    <td>
-                        <button type="submit">Elimina</button>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                        <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit">Elimina</button>
                     </td>
                 </form>
             </tr>
@@ -312,19 +306,19 @@
         </tbody>
     </table>
 
+
     <br>
 
     <h1 style="margin-bottom: 20px;">Prospetto Noleggi Mensili</h1>
 
-    <table>
-        <thead>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
             <tr>
-                <th>Mese</th>
-                <th>Numero di Noleggi Mensili</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Mese</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Numero di Noleggi Mensili</th>
             </tr>
         </thead>
         <tbody>
-
             @php
             $currentYear = Date::now()->year;
               $result = DB::table('car_user')
@@ -336,13 +330,14 @@
             @endphp
 
             @foreach ($result as $row)
-            <tr>
-                <td>{{ date('F', mktime(0, 0, 0, $row->mese, 1)) }}</td> <!-- Converte il numero del mese in nome del mese -->
-                <td>{{ $row->numero_auto_noleggiate }}</td>
+            <tr style="background-color: #f2f2f2;">
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ date('F', mktime(0, 0, 0, $row->mese, 1)) }}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ $row->numero_auto_noleggiate }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
 
     <br>
 
@@ -351,10 +346,10 @@
     <form method="post" action="{{ route('faq.store') }}">
         @csrf
 
-        <label>Domanda:</label>
+        <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;">Domanda:</label>
         <input type="text" name="question" required>
         <br>
-        <label>Risposta:</label>
+        <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;">Risposta:</label>
         <textarea name="answer" required></textarea>
         <br>
         <input type="submit" value="Aggiungi FAQ">
@@ -364,11 +359,11 @@
 
     <h1 style="margin-bottom: 20px;">Tabella FAQ</h1>
 
-    <table>
-        <thead>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
             <tr>
-                <th>Domanda</th>
-                <th>Risposta</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Domanda</th>
+                <th style="padding: 8px; border-bottom: 1px solid #ddd;">Risposta</th>
             </tr>
         </thead>
         <tbody>
@@ -376,21 +371,22 @@
                 $faqs = DB::table('faq')->get();
             @endphp
             @foreach($faqs as $faq)
-            <tr>
+            <tr style="background-color: #f2f2f2;">
                 <form method="POST" action="{{ route('update_or_delete_faq') }}">
                     @csrf
-                    <td><input type="text" name="question" value="{{ $faq->question }}"></td>
-                    <td><input type="text" name="answer" value="{{ $faq->answer }}"></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="question" value="{{ $faq->question }}"></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="answer" value="{{ $faq->answer }}"></td>
                     <input type="hidden" name="faq_id" value="{{ $faq->id }}">
-                    <td>
-                        <button type="submit" name="faq_button" value="update_faq">Modifica</button>
-                        <button type="submit" name="faq_button" value="delete_faq">Cancella</button>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                        <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="faq_button" value="update_faq">Modifica</button>
+                        <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="faq_button" value="delete_faq">Cancella</button>
                     </td>
                 </form>
             </tr>
             @endforeach
         </tbody>
     </table>
+
 
     @endcan
     @endcannot

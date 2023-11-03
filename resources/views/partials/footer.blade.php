@@ -1,26 +1,12 @@
 <footer>
     <link rel="stylesheet" type="text/css" href="sass\myStyle.scss">
       <div id="footer-div">
-        <div class="d-flex justify-content-around mt-4 py-4">
-          <div class="social-box">
-            <h2>Seguici sui Social</h2>
-            <!-- Add social media icons and links here -->
-            <div class="d-flex social">
-                <a href="https://www.facebook.com/"><i class="bi bi-facebook icone-social"></i></a>
-                <a href="https://www.instagram.com/"><i class="bi bi-instagram icone-social"></i></a>
-                <a href="https://twitter.com/?lang=it"><i class="bi bi-twitter icone-social"></i></a>
-            </div>
-        </div>
-
-
-        <div class="contact-box">
-            <h2>Contatti</h2>
-            <p>Telefono: 123-456-789</p>
-            <p>Email: info@vagnoli.com</p>
-            <p>Indirizzo: Via Autostrada, 123, 61032 Fano PU, Italia</p>
-
-            <p><a href={{asset('pdf/Documentazione.pdf')}} target="_blank">Documentazione</a></p>
-        </div>
+        <div class="contact-box" style="font-size: 20px;">
+            <h2 style="font-size: 24px;">Contatti</h2>
+            <p style="font-size: 18px; margin: 10px 0;">Telefono: 123-456-789</p>
+            <p style="font-size: 18px; margin: 10px 0;">Email: info@vagnoli.com</p>
+            <p style="font-size: 18px; margin: 10px 0;">Indirizzo: Via Autostrada, 123, 61032 Fano PU, Italia</p>
+            <p style="font-size: 18px; margin: 10px 0;"><a href="{{asset('pdf/Documentazione.pdf')}}" target="_blank">Documentazione</a></p>
         </div>
 
         <div class="d-flex justify-content-center">

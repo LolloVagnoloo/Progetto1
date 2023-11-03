@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex justify-end mt-4">
-            <x-primary-button>
+            <x-primary-button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">
                 {{ __('Confirm') }}
             </x-primary-button>
         </div>

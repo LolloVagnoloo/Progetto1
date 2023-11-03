@@ -19,31 +19,31 @@
         @method('patch')
 
         <div>
-            <x-input-label for="username" :value="__('Username')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="username" :value="__('Username')" />
             <x-text-input id="username" name="username" type="text" class="mt-1 block w-full" :value="old('username', $user->username)" required autofocus autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('username')" />
         </div>
 
         <div>
-            <x-input-label for="firstname" :value="__('Nome')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="firstname" :value="__('Nome')" />
             <x-text-input id="firstname" name="firstname" type="text" class="mt-1 block w-full" :value="old('firstname', $user->firstname)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('firstname')" />
         </div>
 
         <div>
-            <x-input-label for="lastname" :value="__('Cognome')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="lastname" :value="__('Cognome')" />
             <x-text-input id="lastname" name="lastname" type="text" class="mt-1 block w-full" :value="old('lastname', $user->lastname)" required autofocus autocomplete="lastname" />
             <x-input-error class="mt-2" :messages="$errors->get('lastname')" />
         </div>
 
         <div>
-            <x-input-label for="residence" :value="__('Luogo di Residenza')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="residence" :value="__('Luogo di Residenza')" />
             <x-text-input id="residence" name="residence" type="text" class="mt-1 block w-full" :value="old('residence', $user->residence)" required autofocus autocomplete="residence" />
             <x-input-error class="mt-2" :messages="$errors->get('residence')" />
         </div>
 
         <div>
-            <x-input-label for="birthdate" :value="__('Data di Nascita')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="birthdate" :value="__('Data di Nascita')" />
             <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user->birthdate)" required autofocus autocomplete="birthdate" onkeydown="return false" onpaste="return false"/>
             <x-input-error class="mt-2" :messages="$errors->get('birthdate')" />
         </div>
@@ -68,8 +68,8 @@
             ];
             @endphp
 
-            <x-input-label for="job" :value="__('Lavoro')" />
-            <select id="job" name="job" class="mt-1 block w-full" required autofocus>
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="job" :value="__('Lavoro')" />
+            <select style="padding: 8px; margin-bottom: 12px;" id="job" name="job" class="mt-1 block w-full" required autofocus>
                 @foreach($jobOptions as $option)
                     <option value="{{ $option }}" @if(old('job', $user->job) === $option) selected @endif>{{ $option }}</option>
                 @endforeach
@@ -78,7 +78,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Salva') }}</x-primary-button>
+            <x-primary-button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">{{ __('Salva') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p

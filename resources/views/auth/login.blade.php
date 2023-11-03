@@ -1,39 +1,22 @@
-{{-- <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="public/css/myStyle.css">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-</head> --}}
-
 @extends('layouts.app')
 
 
 @section('content')
-<body class="login-full">
-    <label class="login-title">Login</label>
+<body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0;"
+>
+    <label style="color: red; font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 1rem;"
+    >Login</label>
 
-    <form method="POST" action="{{ route('login') }}" class="login-form">
+    <form method="POST" action="{{ route('login') }}" style="max-width: 400px; width: 100%; padding: 20px; text-align: center; border: 2px solid #000;">
         @csrf
 
         <div>
-            <label for="username"> Username </label>
+            <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="username"> Username </label>
             <input id="username" class="block mt-1 w-full" type="text" name="username" required autofocus autocomplete="username" />
         </div>
 
         <div class="mt-4">
-            <label for="password" > Password </label>
+            <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="password" > Password </label>
 
             <input id="password" class="block mt-1 w-full"
                             type="password"
@@ -44,17 +27,17 @@
         </div>
 
         <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
+            <label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600">{{ __('Ricordami') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <button type="submit"> Login </button>
+            <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit"> Login </button>
         </div>
-
     </form>
+
 </body>
 @endsection
 {{-- </html> --}}

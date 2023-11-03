@@ -14,25 +14,25 @@
         @method('put')
 
         <div>
-            <x-input-label for="current_password" :value="__('Password Attuale')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="current_password" :value="__('Password Attuale')" />
             <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password" :value="__('Nuova Password')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="password" :value="__('Nuova Password')" />
             <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="password_confirmation" :value="__('Conferma Password')" />
+            <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="password_confirmation" :value="__('Conferma Password')" />
             <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Salva') }}</x-primary-button>
+            <x-primary-button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">{{ __('Salva') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p

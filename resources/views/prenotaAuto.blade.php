@@ -12,7 +12,7 @@
             $car = App\Models\Car::find($carId);
         @endphp
 
-        <img class="car-prenota" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">
+        <img style="width: 300px; height: 200px;" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">
         <p>Marca: {{ $car->brand }}</p>
         <p>Modello: {{ $car->model }}</p>
         <p>Posti: {{ $car->seats }}</p>
@@ -39,7 +39,7 @@
     <form action="{{ route('rental.store') }}" method="POST">
         @csrf
         <input type="hidden" name="carId" value="{{ $carId }}">
-        <button type="submit" class="btn btn-primary">Conferma Prenotazione</button>
+        <button type="submit" style="background-color: blue; color: white; border: none; padding: 10px 20px; cursor: pointer;" onmouseover="this.style.backgroundColor='darkblue'" onmouseout="this.style.backgroundColor='blue'">Conferma Prenotazione</button>
     </form>
 </div>
 
