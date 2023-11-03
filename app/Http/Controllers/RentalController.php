@@ -20,7 +20,7 @@ class RentalController extends Controller
         $rental->start_rent = session('start_rent');
         $rental->end_rent = session('end_rent');
         $rental->save();
-        return view('home');
+        return redirect()->route('home');
 
     }
 

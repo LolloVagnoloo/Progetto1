@@ -8,7 +8,7 @@
         </div>
 
       <div >
-        <img id="banner"  src="{{ asset('build\assets\fano.jpg') }}" alt="Fano, Italy" style="display: block; margin: 0 auto; max-width: 50%; height: 500px; animation: photochange 4100ms infinite; opacity: 0;">
+        <img id="banner"  src="{{ asset('build\assets\fano.jpg') }}" alt="Fano, Italy" style="display: block; margin: 0 auto; max-width: 50%; height: 500px; animation: photochange 4100ms infinite;">
       </div>
 
 
