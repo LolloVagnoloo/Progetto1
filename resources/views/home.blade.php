@@ -59,7 +59,7 @@
 >Email: info@vagnoli.com</h4></p>
         </div>
         <br>
-        <h2 style="color: red"> Dove siamo </h2>
+        <h2 style="color: red;" > Dove siamo </h2>
         <br>
         <img src="{{ asset('build\assets\geo.jpg') }}" alt="Location on Maps" style="display: block; margin: 0 auto; max-width: 100%; height: 500px;">
     </section>
@@ -78,12 +78,12 @@
         @foreach ($faqs as $faq)
         <div class="accordion-item" style="border: 1px solid #ccc; margin: 10px;">
             <h2 class="accordion-header" id="heading{{ $faq->id }}" style="background-color: #f0f0f0; padding: 10px; cursor: pointer;">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}">
+                <button class="accordion-button" style="font-size: 20px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}">
                     <strong>{{ $faq->question }}</strong>
                 </button>
             </h2>
             <div id="collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $faq->id }}" data-bs-parent="#accordionExample">
-                <div class="accordion-body" style="display: none; padding: 10px;">
+                <div class="accordion-body" style="display: none; padding: 10px; font-size: 20px;">
                     {{ $faq->answer }}
                 </div>
             </div>
