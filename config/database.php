@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-require( __DIR__ . '/../../include/connect.php');
+//require( __DIR__ . '/../../include/connect.php');
 
 return [
 
@@ -37,39 +37,19 @@ return [
 
     'connections' => [
 
-        // 'mysql' => [
-        //     'driver' => 'mysql',
-        //     'url' => env('DATABASE_URL'),
-        //     'host' => env('DB_HOST', '127.0.0.1'),
-        //     'port' => env('DB_PORT', '3306'),
-        //     'database' => env('DB_DATABASE', 'forge'),
-        //     'username' => env('DB_USERNAME', 'forge'),
-        //     'password' => env('DB_PASSWORD', ''),
-        //     'unix_socket' => env('DB_SOCKET', ''),
-        //     'charset' => 'utf8mb4',
-        //     'collation' => 'utf8mb4_unicode_ci',
-        //     'prefix' => '',
-        //     'prefix_indexes' => true,
-        //     'strict' => true,
-        //     'engine' => null,
-        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
-        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-        //     ]) : [],
-        // ],
-
 
         'mysql' => [
             'driver' => 'mysql',
             // 'url' => env('DATABASE_URL'),
-             //'host' => '127.0.0.1',
-            'host' => $HOST,
+            'host' => '127.0.0.1',
+            //'host' => $HOST,
             'port' => '3306',
-            //   'database' => 'progettotecnologieweb',
-            //   'username' => 'root',
-            //   'password' => '',
-              'database' => $DB,
-              'username' => $USER,
-              'password' => $PASSWORD,
+               'database' => 'progettotecnologieweb',
+               'username' => 'root',
+               'password' => '',
+            //   'database' => $DB,
+            //   'username' => $USER,
+            //   'password' => $PASSWORD,
             'unix_socket' => '',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
