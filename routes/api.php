@@ -17,11 +17,7 @@ use App\Http\Controllers\Api\RentalController;
 |
 */
 
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
+//Rotte API
 
 Route::apiResource('cars', CarController::class);
 Route::apiResource('users', UserController::class);

@@ -21,6 +21,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        // Definisco delle regole booleane per stabilire i permessi di un utente sul sito
+
         Gate::define('staff_admin', function(User $user){
 
             return ($user->role === 'staff' || $user->role === 'admin');

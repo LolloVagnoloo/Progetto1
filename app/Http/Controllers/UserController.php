@@ -35,7 +35,9 @@ class UserController extends Controller
 
         $user->save();
 
+        //Loggo l'utente alla registrazione
         Auth::login($user);
+
         return redirect()->route('home');
 
     }
@@ -51,12 +53,16 @@ class UserController extends Controller
         ]);
 
         $user = new User();
+
+        //Imposto il ruolo su staff perchè di default è client
         $user->role = 'staff';
 
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->username = $request->input('username');
         $user->password = $request->input('password');
+
+        //Non valorizzo questi campi perchè non sono richiesti
         $user->birthdate = null;
         $user->residence = null;
         $user->job = null;

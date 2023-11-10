@@ -11,7 +11,7 @@
 
     <form class="register-form" method="POST" action="{{ route('users.store') }}" style="max-width: 400px; width: 100%; padding: 20px; text-align: center; border: 2px solid #000;">
         @csrf
-
+        <!--i tag con la x sono tag personalizzati che si collegano ai components-->
         <div>
             <x-input-label style="font-weight: bold; display: inline-block; margin-bottom: 8px;" for="nome" :value="__('Nome')" />
             <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" required />

@@ -55,12 +55,15 @@
 
     <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <h1>Auto Disponibili a Noleggio</h1>
+        <!-- Se $errorMessage è diverso da NULL -->
         @if(isset($errorMessage))
         <div class="alert alert-danger">
             {{ $errorMessage }}
         </div>
         @else
+        <!-- Definisco il numero di colonne della grid, lo spazio che occupa ogni elemento e lo spazio tra gli elementi -->
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            <!-- Ciclo per mostrare tutte le auto nella grid -->
             @foreach ($cars as $car)
             <div style="border: 1px solid #ccc; padding: 10px; background-color: #fff;">
                 <img style="width: 300px; height: 200px;" src="{{ asset('images/cars/' . $car->image) }}" alt="Auto">

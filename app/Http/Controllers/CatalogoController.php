@@ -15,25 +15,32 @@ class CatalogoController extends Controller
         return view('Catalogo');
     }
 
+    //Con questa funzione mostro la vista catalogo e tutti gli elementi cars
     public function catalogo()
-{
+    {
     $cars = Car::all(); // Ottieni tutte le auto dal database
 
     return view('catalogo', compact('cars'));
-}
+    }
 
 
+    //Funzione che regola il filtraggio delle auto sul catalogo
 public function filtro(Request $request)
     {
+        //Inserisco i campi nel DB
         $startRent = $request->input('start_rent');
         $endRent = $request->input('end_rent');
         $minPrice = $request->input('min-price');
         $maxPrice = $request->input('max-price');
         $seats = $request->input('seats');
 
+        /* Salvo in sessione i due campi delle date perchè
+        mi servono nella pagina di conferma prenotazione e altrimenti
+        si resetterebbero i valori delle variabili una volt cambiata pagina*/
         session(['start_rent' => $startRent]);
         session(['end_rent' => $endRent]);
 
+        //Se non sono state selezionate date resitituisco un messaggio
         if(empty($startRent) || empty($endRent)){
             $errorMessage = 'Inserire le date di noleggio.';
             return view('catalogo', compact('errorMessage'));
@@ -44,12 +51,13 @@ public function filtro(Request $request)
         $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
         $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);
 
-
+        //Controllo che le date di noleggio siano successive alla data odierna
         if ($startRentDate->lessThanOrEqualTo($currentDate) || $endRentDate->lessThanOrEqualTo($currentDate)) {
             $errorMessage = 'Le date di noleggio devono essere successive a quella odierna.';
             return view('catalogo', compact('errorMessage'));
         }
 
+        //Controllo che la data di fine sia maggiore della data di inizio
         if($startRentDate>$endRentDate){
             $errorMessage = 'La data di fine noleggio deve essere successiva a quella di inizio.';
             return view('catalogo', compact('errorMessage'));
@@ -74,6 +82,7 @@ public function filtro(Request $request)
 
 
         // FILTRI TABELLA CARS (PREZZO E POSTI)
+        //Una volta applicato il filtro sulle date applico quelli su prezzi e posti
 
         $cars->when($minPrice, function ($query, $minPrice) {
             return $query->where('price', '>=', $minPrice);
@@ -87,16 +96,17 @@ public function filtro(Request $request)
             return $query->where('seats', $seats);
         });
 
+        //Ottengo i risultati finali da mostrare all'user
         $cars = $cars->get();
 
-
+        //Se non ci sono macchine che soddisfano i requisiti mostro un messaggio
         if (count($cars) === 0) {
             $errorMessage = 'Non ci sono vetture che soddisfano i requisiti.';
             return view('catalogo', compact('errorMessage'));
         }
         else
         {
-            // Passa i risultati alla vista
+            // Passa i risultati alla vista e la visualizzo
             return view('catalogo', compact('cars'));
         }
     }

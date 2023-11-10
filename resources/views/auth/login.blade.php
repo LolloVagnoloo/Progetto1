@@ -4,8 +4,7 @@
 @section('content')
 <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0;"
 >
-    <label style="color: red; font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 1rem;"
-    >Login</label>
+    <label style="color: red; font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 1rem;">Login</label>
 
     <form method="POST" action="{{ route('login') }}" style="max-width: 400px; width: 100%; padding: 20px; text-align: center; border: 2px solid #000;">
         @csrf
@@ -23,6 +22,7 @@
                             name="password"
                             required autocomplete="current-password" />
 
+            <!--i tag con la x sono tag personalizzati che si collegano ai components-->
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -40,4 +40,4 @@
 
 </body>
 @endsection
-{{-- </html> --}}
+

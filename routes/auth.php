@@ -13,10 +13,9 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+//Rotte che gestiscono l'autenticazione Breeze
+
 Route::middleware('guest')->group(function () {
-    // Route::post('/form', function(Request $request){
-    //     dd($request);
-    // })->name('form');
 
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');

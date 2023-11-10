@@ -24,7 +24,9 @@
     @csrf
 
     <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <!-- Thread definisce l'intestazione della tabella -->
         <thead style="background-color: #f2f2f2;">
+            <!-- tr è una riga della tabella che contiene dei th ciè le intestazioni delle singole colonne-->
             <tr>
                 <th style="padding: 8px; border-bottom: 1px solid #ddd;">Marca</th>
                 <th style="padding: 8px; border-bottom: 1px solid #ddd;">Modello</th>
@@ -38,6 +40,7 @@
             </tr>
         </thead>
         <tbody>
+            <!-- All'intero di una riga tr sono presenti tante celle td -->
             <tr style="background-color: #f2f2f2;">
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">
                     <input type="text" name="brand" required>
@@ -63,6 +66,7 @@
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">
                     <input type="file" name="image" accept=".jpg, .jpeg, .png, .gif" required>
                 </td>
+                <!-- Nell'ultima cella c'è il bottone per salvare l'auto -->
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">
                     <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit">Salva Nuova Auto</button>
                 </td>
@@ -106,6 +110,7 @@
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="description" value="{{ $car->description }}"></td>
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;"><input type="text" name="price" placeholder="{{ $car->price }}" value="{{ $car->price }}"></td>
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                    <!-- Se c'è un'immagine mostra il nome msopra il campo input -->
                     @if ($car->image)
                         <input type="text" name="image" value="{{ $car->image }}" placeholder="Nome del file" readonly>
                         <input type="file" name="new_image" accept=".jpg, .jpeg, .png, .gif">
@@ -114,6 +119,7 @@
                     @endif
                 </td>
                 <input type="hidden" name="car_id" value="{{ $car->id }}">
+                <!-- Cella con i due mìpulsanti Modifica/Cancella -->
                 <td style="padding: 8px; border-bottom: 1px solid #ddd;">
                     <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="car_button" value="update_car">Modifica</button>
                     <button style="padding: 8px; margin-bottom: 12px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" type="submit" name="car_button" value="delete_car">Cancella</button>

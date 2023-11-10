@@ -27,6 +27,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        //recupero l'oggetto utente loggato tramite l'id
         $user = User::find(auth()->id());
 
         $user->username = $request->input('username');
@@ -49,12 +50,14 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->id());
 
+        //prima di cancellare l'utente eseguo il logout
         Auth::logout();
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        //Rimando alla home
         return Redirect::to('/');
     }
 }

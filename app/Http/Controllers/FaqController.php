@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class FaqController extends Controller
 {
 
+    //Mostro la home con tutte le FAQ
     public function index()
 {
     $faqs = Faq::all();
@@ -14,21 +15,26 @@ class FaqController extends Controller
 }
 
 
-
+    //Inserimento FAQ
     public function store(Request $request)
     {
+        //Istanzio un oggetto FAQ
         $faq = new Faq();
 
+        //Prendo in input i campi
         $faq->question = $request->input('question');
         $faq->answer = $request->input('answer');
 
+        //salvo l'oggetto sul db
         $faq->save();
 
+        //Richiamo la rotta che riporta alla home
         return redirect()->route('adminPanel')->with([
             'success' => "FAQ creata con successo."
         ]);
 
     }
+
 
 
     public function update(Request $request, Faq $faq)
@@ -40,9 +46,12 @@ class FaqController extends Controller
 
     }
 
+
     public function updateOrDeleteFaq(Request $request)
     {
+        //trovo id della singola faq
         $faqId = $request->input('faq_id');
+        //Seleziono l'oggetto corrispondente
         $faq = Faq::find($faqId);
         if ($request->has('faq_button')) {
             $action = $request->input('faq_button');

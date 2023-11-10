@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //La classe Blueprint fornisce metodi per semplificare la creazione di tabelle nel DB
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->rememberToken();

@@ -16,6 +16,7 @@ use App\Models\Car;
 
 class User extends Authenticatable
 {
+    //definisco il nome della tabella corrispondente sul DB
     protected $table='users';
     use HasApiTokens, HasFactory, Notifiable;
 

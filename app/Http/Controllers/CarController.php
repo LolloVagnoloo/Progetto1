@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Date;
 
 class CarController extends Controller
 {
-    // Crea Auto
+    // Inserimento Auto
 
     public function store(Request $request)
         {
+            //VAlidazione dei dati inseriti per ogni campo
             $validatedData = $request->validate([
                 'brand' => 'required',
                 'model' => 'required',
@@ -27,6 +28,8 @@ class CarController extends Controller
 
             ]);
 
+            /*Se la variabile request contiene un campo image, viene inserita anch'essa sul DB
+            e viene definito un nome per il file */
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = $image->getClientOriginalName();
@@ -34,6 +37,8 @@ class CarController extends Controller
                 $imageName = NULL;
             }
 
+            /* Viene creata una istanza della classe Car e vengono fillati tutti i campi richiesti sul DB
+            infine viene salvato il record sul DB col metodo save() */
             $car = new Car();
             $car->brand = $request->input('brand');
             $car->model = $request->input('model');
@@ -46,11 +51,14 @@ class CarController extends Controller
 
             $car->save();
 
+            /* Se esiste un nome dell'immagine, viene definito un percorso
+             e la foto viene spostata in quella direcory */
             if (!is_null($imageName)) {
                 $destinationPath = public_path() . '/images/cars';
                 $image->move($destinationPath, $imageName);
             };
 
+            //Si torna sul pannello di controllo
             return view('adminPanel');
         }
 
@@ -59,21 +67,23 @@ class CarController extends Controller
 
         public function updateOrDelete(Request $request)
     {
+        /* Viene individuato l'id della macchina da modificare e viene selezionata l'istanza giusta
+        della classe Car*/
         $carId = $request->input('car_id');
         $car = Car::find($carId);
         if ($request->has('car_button')) {
             $action = $request->input('car_button');
-
             if ($action === 'update_car') {
 
+                // Aggiorna il campo image nel database solo se è stato caricato un nuovo file
                 if ($request->hasFile('new_image')) {
                     $image = $request->file('new_image');
                     $imageName = $image->getClientOriginalName();
                     $destinationPath = public_path() . '/images/cars';
                     $image->move($destinationPath, $imageName);
-                    $car->image = $imageName; // Aggiorna il campo image nel database solo se è stato caricato un nuovo file
+                    $car->image = $imageName;
                 }
-
+                //Aggiorno il resto dei campi e salvo il record
                 $car->plate = $request->input('plate');
                 $car->brand = $request->input('brand');
                 $car->model = $request->input('model');
@@ -83,10 +93,12 @@ class CarController extends Controller
                 $car->description = $request->input('description');
 
                 $car->save();
-
+                //Torno al pannello di controllo
                 return redirect()->route('adminPanel')->with([
                     'success' => "La vettura è stata aggiornata."
                 ]);
+                /*Caso in cui voglia eliminare la macchina
+                 chiamo il metodo delete() sull'istanza della classe Car selezionata */
             } elseif ($action === 'delete_car') {
                 $car->delete();
                 return redirect()->route('adminPanel')->with([

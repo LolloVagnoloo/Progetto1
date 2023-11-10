@@ -28,6 +28,7 @@ class RentalController extends Controller
 
         public function getCarRentalsByMonth(Request $request)
         {
+            //seleziono il mese dall'input e prendo l'anno corrente
             $month = $request->input('month', date('m'));
             $year = now()->year;
 
@@ -36,15 +37,19 @@ class RentalController extends Controller
             ->join('cars', 'car_user.car_id', '=', 'cars.id')
             ->join('users', 'car_user.user_id', '=', 'users.id')
             ->select('cars.plate', 'cars.brand', 'cars.model', 'users.firstname', 'users.lastname')
-            ->whereYear('car_user.start_rent', $year)
-            ->whereMonth('car_user.start_rent', $month)
+            ->whereYear('car_user.start_rent', $year) //Matcho l'anno con quello presente sulla data di inizio
+            ->whereMonth('car_user.start_rent', $month) ////Matcho l'anno con quello presente sulla data di inizio
+
+            /*Faccio in modo che nei risultati ci siano i noleggi anche se la data di fine è in un altro mese
+             rispetto all'inizio altrimenti prenderebbe solo quelli che sono stati valutati dalla data di inizio
+             lo faccio attraverso una funzione di callback*/
             ->orWhere(function ($query) use ($year, $month) {
                 $query->whereYear('car_user.end_rent', $year)
                       ->whereMonth('car_user.end_rent', $month);
             })
             ->get();
 
-            //dd($carRentals);
+            //Mostro il pannello di controllo con i risultati della query
              return view('adminPanel')->with('carRentals', $carRentals);
 
         }

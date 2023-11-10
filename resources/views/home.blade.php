@@ -55,8 +55,7 @@
                 >Contattaci per informazioni e prenotazioni:</h4></p>
             <p><h4 style="font-weight: bold; font-size: 1.2em;"
                 >Telefono: 123-456-789</h4></p>
-            <p><h4 style="font-weight: bold; font-size: 1.2em;"
->Email: info@vagnoli.com</h4></p>
+            <p><h4 style="font-weight: bold; font-size: 1.2em;">Email: info@vagnoli.com</h4></p>
         </div>
         <br>
         <h2 style="color: red;" > Dove siamo </h2>
@@ -79,6 +78,8 @@
         <div class="accordion-item" style="border: 1px solid #ccc; margin: 10px;">
             <h2 class="accordion-header" id="heading{{ $faq->id }}" style="background-color: #f0f0f0; padding: 10px; cursor: pointer;">
                 <button class="accordion-button" style="font-size: 20px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}">
+                    <!-- Il tag strong definisce un testo importante ed enfatizzato che verrà mostrato in grassetto
+                    usa l'interpolazione per mostrare dei dati php all'interno del corpo -->
                     <strong>{{ $faq->question }}</strong>
                 </button>
             </h2>

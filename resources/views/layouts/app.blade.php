@@ -1,3 +1,4 @@
+<!-- File principale che rappresenta il layout di base dell'applicazione -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -21,6 +22,7 @@
     </header>
 
     <body>
+            <!-- @yield è un segnaposto che può essere sovrascritto dalle viste figlie -->
             <main class="py-4">
                 @yield('content')
             </main>
