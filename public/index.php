@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+//Costante che rappresenta il momento in cui Laravel viene avviato (calcolo tempo esecuzione)
 define('LARAVEL_START', microtime(true));
 
 /*

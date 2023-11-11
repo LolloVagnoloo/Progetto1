@@ -27,16 +27,14 @@ class CatalogoController extends Controller
     //Funzione che regola il filtraggio delle auto sul catalogo
 public function filtro(Request $request)
     {
-        //Inserisco i campi nel DB
+        //Prendo i dati dal filtro
         $startRent = $request->input('start_rent');
         $endRent = $request->input('end_rent');
         $minPrice = $request->input('min-price');
         $maxPrice = $request->input('max-price');
         $seats = $request->input('seats');
 
-        /* Salvo in sessione i due campi delle date perchè
-        mi servono nella pagina di conferma prenotazione e altrimenti
-        si resetterebbero i valori delle variabili una volt cambiata pagina*/
+        /* Salvo in sessione i due campi delle date */
         session(['start_rent' => $startRent]);
         session(['end_rent' => $endRent]);
 
@@ -46,7 +44,7 @@ public function filtro(Request $request)
             return view('catalogo', compact('errorMessage'));
         }
 
-        // Validazione delle date
+        //Preparo il formato delle date per il controllo
         $currentDate = now(); // Data odierna
         $startRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $startRent);
         $endRentDate = \Carbon\Carbon::createFromFormat('Y-m-d', $endRent);

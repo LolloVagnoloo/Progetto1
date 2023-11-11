@@ -96,6 +96,7 @@
     </thead>
     <tbody>
         @php
+            //Query Builder
             $cars = DB::table('cars')->get();
         @endphp
         @foreach($cars as $car)
@@ -253,6 +254,7 @@
     </thead>
     <tbody>
         @php
+            //Query Builder
             $users = DB::table('users')
                 ->where('role', 'staff')
                 ->get();
@@ -290,6 +292,7 @@
         </thead>
         <tbody>
             @php
+                //Query Buider
                 $users = DB::table('users')
                     ->where('role', 'client')
                     ->get();
@@ -326,6 +329,7 @@
         </thead>
         <tbody>
             @php
+            //Query Builder
             $currentYear = Date::now()->year;
               $result = DB::table('car_user')
                   ->select(DB::raw('MONTH(start_rent) as mese'), DB::raw('COUNT(*) as numero_auto_noleggiate'))
@@ -374,6 +378,7 @@
         </thead>
         <tbody>
             @php
+                //Query Builder
                 $faqs = DB::table('faq')->get();
             @endphp
             @foreach($faqs as $faq)

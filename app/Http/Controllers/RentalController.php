@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class RentalController extends Controller
 {
-
+    //Salvo un noleggio
     public function store(Request $request)
     {
 
@@ -32,7 +32,7 @@ class RentalController extends Controller
             $month = $request->input('month', date('m'));
             $year = now()->year;
 
-
+            //Query scritta col Query Builder
             $carRentals= DB::table('car_user')
             ->join('cars', 'car_user.car_id', '=', 'cars.id')
             ->join('users', 'car_user.user_id', '=', 'users.id')
@@ -42,7 +42,7 @@ class RentalController extends Controller
 
             /*Faccio in modo che nei risultati ci siano i noleggi anche se la data di fine è in un altro mese
              rispetto all'inizio altrimenti prenderebbe solo quelli che sono stati valutati dalla data di inizio
-             lo faccio attraverso una funzione di callback*/
+             lo faccio attraverso una funzione di callback che riceve un oggetto Query Builder come argomento*/
             ->orWhere(function ($query) use ($year, $month) {
                 $query->whereYear('car_user.end_rent', $year)
                       ->whereMonth('car_user.end_rent', $month);

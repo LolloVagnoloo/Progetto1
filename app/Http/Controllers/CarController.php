@@ -28,8 +28,8 @@ class CarController extends Controller
 
             ]);
 
-            /*Se la variabile request contiene un campo image, viene inserita anch'essa sul DB
-            e viene definito un nome per il file */
+            /*Se la variabile request contiene un campo image
+             viene definito un nome per il file che verrà poi salvato sul DB*/
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = $image->getClientOriginalName();
