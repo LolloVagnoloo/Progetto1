@@ -38,7 +38,7 @@ class RentalController extends Controller
             ->join('users', 'car_user.user_id', '=', 'users.id')
             ->select('cars.plate', 'cars.brand', 'cars.model', 'users.firstname', 'users.lastname')
             ->whereYear('car_user.start_rent', $year) //Matcho l'anno con quello presente sulla data di inizio
-            ->whereMonth('car_user.start_rent', $month) ////Matcho l'anno con quello presente sulla data di inizio
+            ->whereMonth('car_user.start_rent', $month) //Matcho l'anno con quello presente sulla data di inizio
 
             /*Faccio in modo che nei risultati ci siano i noleggi anche se la data di fine è in un altro mese
              rispetto all'inizio altrimenti prenderebbe solo quelli che sono stati valutati dalla data di inizio

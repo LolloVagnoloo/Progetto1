@@ -63,7 +63,8 @@ public function filtro(Request $request)
 
 
 
-        // FILTRI TABELLA CAR_USER (DATE DISPONIBILI)
+        /* FILTRI TABELLA CAR_USER (Seleziono le istanze di noleggi con date non compatibili
+         con quelle selezionate dall'user */
         $rentedCarIds = Rental::query()
         ->where(function ($query) use ($startRent, $endRent) {
             $query->where('start_rent', '<=', $endRent)
